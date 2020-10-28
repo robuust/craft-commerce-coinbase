@@ -1,0 +1,31 @@
+{% from "_includes/forms" import textField, lightswitchField, autosuggestField %}
+
+{{ autosuggestField({
+    label: 'API Key'|t('commerce'),
+    id: 'apiKey',
+    class: 'ltr',
+    name: 'apiKey',
+    value: gateway.apiKey,
+    suggestEnvVars: true,
+    errors: gateway.getErrors('apiKey')
+}) }}
+
+{{ autosuggestField({
+    label: "Secret"|t('commerce'),
+    id: 'secret',
+    class: 'ltr',
+    name: 'secret',
+    value: gateway.secret,
+    suggestEnvVars: true,
+    errors: gateway.getErrors('secret')
+}) }}
+
+{{ autosuggestField({
+    label: "Account ID"|t('commerce'),
+    id: 'accountId',
+    class: 'ltr',
+    name: 'accountId',
+    value: gateway.accountId,
+    suggestEnvVars: true,
+    errors: gateway.getErrors('accountId')
+}) }}
