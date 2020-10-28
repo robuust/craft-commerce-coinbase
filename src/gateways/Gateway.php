@@ -3,6 +3,7 @@
 namespace robuust\coinbase\gateways;
 
 use Craft;
+use craft\commerce\models\payments\BasePaymentForm;
 use craft\commerce\omnipay\base\OffsiteGateway;
 use Omnipay\Coinbase\Gateway as OmnipayGateway;
 use Omnipay\Common\AbstractGateway;
@@ -57,6 +58,16 @@ class Gateway extends OffsiteGateway
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate('commerce-coinbase/gatewaySettings', ['gateway' => $this]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function populateRequest(array &$request, BasePaymentForm $paymentForm = null)
+    {
+        parent::populateRequest($request, $paymentForm);
+        $request['name'] = $request['metadata'] = $request['description'];
+        $request['pricing_type'] = 'fixed_price';
     }
 
     /**
