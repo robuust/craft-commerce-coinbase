@@ -66,8 +66,10 @@ class Gateway extends OffsiteGateway
     public function populateRequest(array &$request, BasePaymentForm $paymentForm = null)
     {
         parent::populateRequest($request, $paymentForm);
-        $request['name'] = $request['metadata'] = $request['description'];
+        $request['name'] = $request['description'];
         $request['pricing_type'] = 'fixed_price';
+        $request['redirect_url'] = $request['returnUrl'];
+        $request['metadata'] = [];
     }
 
     /**
