@@ -33,4 +33,4 @@ composer require robuust/craft-commerce-coinbase
 
 To add a Coinbase payment gateway, go to Commerce → Settings → Gateways, create a new gateway, and set the gateway type to Coinbase.
 
-> **Tip:** The API Key and Locale settings can be set to environment variables. See [Environmental Configuration](https://docs.craftcms.com/v3/config/environments.html) in the Craft docs to learn more about that.
+> **Tip:** The API Key can be set to environment variables. See [Environmental Configuration](https://docs.craftcms.com/v3/config/environments.html) in the Craft docs to learn more about that.

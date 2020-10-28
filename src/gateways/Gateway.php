@@ -21,16 +21,6 @@ class Gateway extends OffsiteGateway
      */
     public $apiKey;
 
-    /**
-     * @var string
-     */
-    public $secret;
-
-    /**
-     * @var string
-     */
-    public $accountId;
-
     // Public Methods
     // =========================================================================
 
@@ -95,8 +85,6 @@ class Gateway extends OffsiteGateway
         $gateway = static::createOmnipayGateway($this->getGatewayClassName());
 
         $gateway->setApiKey(Craft::parseEnv($this->apiKey));
-        $gateway->setSecret(Craft::parseEnv($this->secret));
-        $gateway->setAccountId(Craft::parseEnv($this->accountId));
 
         return $gateway;
     }
