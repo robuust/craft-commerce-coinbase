@@ -62,7 +62,7 @@ class Gateway extends OffsiteGateway
         $request['redirect_url'] = $request['returnUrl'];
         $request['metadata'] = [];
 
-        if (empty($request['code'])) {
+        if (empty($request['code']) && !empty($request['commerceTransactionId'])) {
             $transaction = Plugin::getInstance()->transactions->getTransactionById($request['commerceTransactionId']);
             $request['code'] = $transaction->code;
         }

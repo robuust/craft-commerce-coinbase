@@ -1,7 +1,7 @@
 {
     "name": "robuust/craft-commerce-coinbase",
     "description": "Coinbase integration for Craft Commerce 2 & 3",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "craft-plugin",
     "keywords": [
         "coinbase",
