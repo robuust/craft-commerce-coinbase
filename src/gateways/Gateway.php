@@ -4,8 +4,8 @@ namespace robuust\coinbase\gateways;
 
 use Craft;
 use craft\commerce\models\payments\BasePaymentForm;
+use craft\commerce\models\Transaction;
 use craft\commerce\omnipay\base\OffsiteGateway;
-use craft\commerce\Plugin;
 use Omnipay\Coinbase\Gateway as OmnipayGateway;
 use Omnipay\Common\AbstractGateway;
 
@@ -61,11 +61,6 @@ class Gateway extends OffsiteGateway
         $request['pricing_type'] = 'fixed_price';
         $request['redirect_url'] = $request['returnUrl'];
         $request['metadata'] = [];
-
-        if (empty($request['code']) && !empty($request['commerceTransactionId'])) {
-            $transaction = Plugin::getInstance()->transactions->getTransactionById($request['commerceTransactionId']);
-            $request['code'] = $transaction->code;
-        }
     }
 
     /**
@@ -101,5 +96,16 @@ class Gateway extends OffsiteGateway
     protected function getGatewayClassName()
     {
         return '\\'.OmnipayGateway::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createRequest(Transaction $transaction, BasePaymentForm $form = null)
+    {
+        $request = parent::createRequest($transaction, $form);
+        $request['code'] = $transaction->code;
+
+        return $request;
     }
 }

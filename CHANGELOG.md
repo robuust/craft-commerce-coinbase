@@ -1,3 +1,7 @@
+## 1.0.3 - 22-04-2021
+### Fixed
+- Improved performance by setting request code from available transaction
+
 ## 1.0.2 - 16-12-2020
 ### Fixed
 - Make sure the transaction code is only fetched when there is a commerceTransactionId
