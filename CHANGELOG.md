@@ -1,3 +1,7 @@
+## 1.1.0 - 21-06-2021
+### Changed
+- Updated to work with Commerce 3.3
+
 ## 1.0.3 - 22-04-2021
 ### Fixed
 - Improved performance by setting request code from available transaction
