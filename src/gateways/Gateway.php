@@ -6,6 +6,7 @@ use Craft;
 use craft\commerce\models\payments\BasePaymentForm;
 use craft\commerce\models\Transaction;
 use craft\commerce\omnipay\base\OffsiteGateway;
+use craft\helpers\App;
 use Omnipay\Coinbase\Gateway as OmnipayGateway;
 use Omnipay\Common\AbstractGateway;
 
@@ -46,7 +47,7 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         return Craft::$app->getView()->renderTemplate('commerce-coinbase/gatewaySettings', ['gateway' => $this]);
     }
@@ -54,7 +55,7 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
-    public function populateRequest(array &$request, BasePaymentForm $paymentForm = null)
+    public function populateRequest(array &$request, BasePaymentForm $paymentForm = null): void
     {
         parent::populateRequest($request, $paymentForm);
         $request['name'] = $request['description'];
@@ -66,7 +67,7 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
         $rules[] = ['paymentType', 'compare', 'compareValue' => 'purchase'];
@@ -85,7 +86,7 @@ class Gateway extends OffsiteGateway
         /** @var OmnipayGateway $gateway */
         $gateway = static::createOmnipayGateway($this->getGatewayClassName());
 
-        $gateway->setApiKey(Craft::parseEnv($this->apiKey));
+        $gateway->setApiKey(App::parseEnv($this->apiKey));
 
         return $gateway;
     }
@@ -93,7 +94,7 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
-    protected function getGatewayClassName()
+    protected function getGatewayClassName(): ?string
     {
         return '\\'.OmnipayGateway::class;
     }
@@ -101,7 +102,7 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
-    protected function createRequest(Transaction $transaction, BasePaymentForm $form = null)
+    protected function createRequest(Transaction $transaction, BasePaymentForm $form = null): mixed
     {
         $request = parent::createRequest($transaction, $form);
         $request['code'] = $transaction->code;
