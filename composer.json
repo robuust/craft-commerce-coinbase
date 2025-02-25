@@ -1,7 +1,7 @@
 {
     "name": "robuust/craft-commerce-coinbase",
     "description": "Coinbase integration for Craft Commerce",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "type": "craft-plugin",
     "keywords": [
         "coinbase",
@@ -25,9 +25,9 @@
         "rss": "https://github.com/robuust/craft-commerce-coinbase/commits/master.atom"
     },
     "require": {
-        "craftcms/cms": "^4.0",
-        "craftcms/commerce": "^4.0",
-        "craftcms/commerce-omnipay": "^4.0",
+        "craftcms/cms": "^4.0|^5.0",
+        "craftcms/commerce": "^4.0|^5.0",
+        "craftcms/commerce-omnipay": "^4.1",
         "zek/omnipay-coinbase": "^1.0"
     },
     "autoload": {

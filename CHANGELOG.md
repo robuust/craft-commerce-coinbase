@@ -1,3 +1,7 @@
+## 2.1.0 - 25-02-2025
+### Added
+- Added Craft 5 compatibility
+
 ## 2.0.0 - 13-07-2022
 ### Added
 - Added Craft 4 compatibility
